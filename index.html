@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PORTALIS — Asesor inteligente de puertas arquitectónicas, blindadas, pivotantes e interiores de alta gama. Encuentra la solución técnica y estética ideal para tu proyecto.">
+  <meta name="theme-color" content="#090A0D">
+  <title>PORTALIS — Asesoría Arquitectónica en Puertas & Cerramientos</title>
+
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Estilos del Sistema de Diseño -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Luz Ambiental de Fondo -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Encabezado del Sitio -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-door-closed"></i>
+        </div>
+        <div>
+          <span class="brand-title">Portalis</span>
+          <span class="brand-sub">Architectural Doors</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <button class="nav-btn active" id="navBtnAdvisor">
+          <i class="fa-solid fa-compass"></i> Asesor Guiado
+        </button>
+        <button class="nav-btn" id="navBtnCatalog">
+          <i class="fa-solid fa-grid-2"></i> Catálogo Completo
+        </button>
+        <button class="nav-btn" id="navBtnGuide">
+          <i class="fa-solid fa-ruler-combined"></i> Guía de Medición
+        </button>
+
+        <!-- Conmutador Blanco / Negro (Theme Switcher) -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Cambiar tema blanco y negro" title="Alternar entre modo blanco y negro">
+          <span class="theme-icon" id="themeIcon"><i class="fa-solid fa-sun"></i></span>
+          <span class="theme-label" id="themeLabel">Modo Claro</span>
+        </button>
+
+        <button class="nav-btn btn-cta" id="btnRestartAdvisor">
+          <i class="fa-solid fa-rotate-right"></i> Reiniciar
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main class="main-wrapper">
+
+    <!-- Sección Hero Introductoria -->
+    <section class="hero-intro">
+      <div class="hero-pill">
+        <i class="fa-solid fa-sliders"></i> Sistema de Recomendación & Selección Técnica
+      </div>
+      <h1 class="hero-title">
+        Encuentra la puerta exacta para tu <span>visión arquitectónica</span>
+      </h1>
+      <p class="hero-subtitle">
+        Responde 5 breves preguntas sobre ubicación, nivel de seguridad, aislamiento y estilo. Nuestro motor técnico calculará la solución idónea con herrajes certificados y cotización estimada.
+      </p>
+
+      <div class="quick-stats">
+        <div class="stat-item">
+          <i class="fa-solid fa-shield-halved"></i> Certificación Antirrobo Grados 3 a 5
+        </div>
+        <div class="stat-item">
+          <i class="fa-solid fa-volume-xmark"></i> Insonorización hasta 47 dB
+        </div>
+        <div class="stat-item">
+          <i class="fa-solid fa-award"></i> Sistemas Pivotantes Ocultos de Autor
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         VISTA 1: ASESOR GUIADO (WIZARD PASO A PASO)
+         ==================================================================== -->
+    <section id="wizardView" class="wizard-card" aria-live="polite">
+      <!-- Indicador de Progreso -->
+      <div class="progress-section">
+        <div class="progress-header">
+          <span class="step-count-badge" id="stepBadge">Paso 1 de 5</span>
+          <span class="step-phase-title" id="stepPhaseTitle">Ubicación del vano</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <!-- Encabezado del Paso -->
+      <div class="step-banner">
+        <h2 class="step-headline" id="stepHeadline">¿Dónde estará ubicada la puerta?</h2>
+        <p class="step-description" id="stepDescription">El entorno determina las exigencias de intemperie, seguridad y resistencia.</p>
+      </div>
+
+      <!-- Grid de Opciones Seleccionables -->
+      <div class="options-grid" id="optionsGrid">
+        <!-- Generado dinámicamente vía app.js -->
+      </div>
+
+      <!-- Acciones de Navegación del Paso -->
+      <div class="wizard-actions">
+        <button class="btn-secondary" id="btnPrevStep" disabled>
+          <i class="fa-solid fa-arrow-left"></i> Anterior
+        </button>
+        <button class="btn-primary" id="btnNextStep">
+          Continuar <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         VISTA 2: RESULTADOS & RECOMENDACIÓN INTELIGENTE
+         ==================================================================== -->
+    <section id="resultsView" class="results-view" style="display: none;">
+
+      <!-- Hero Card de la Puerta Recomendada -->
+      <div class="results-hero-card">
+        <!-- Galería / Imagen Destacada -->
+        <div class="result-gallery">
+          <img src="" alt="" id="resultDoorImage" class="result-image">
+          <div class="match-floating-badge" id="resultMatchPercentage">
+            <i class="fa-solid fa-check-circle"></i> Afinidad: 98%
+          </div>
+        </div>
+
+        <!-- Panel de Información & Justificación -->
+        <div class="result-info-panel">
+          <div>
+            <span class="result-tagline-pill" id="resultTaglinePill">EXTERIOR · ARQUITECTÓNICO</span>
+            <h2 class="result-door-name" id="resultDoorName">Völker Monumental Pivot P-900</h2>
+            <p class="result-door-desc" id="resultDoorDesc">Presencia monumental, apertura pivotante fluida y nobleza de materiales.</p>
+
+            <!-- Badges Técnicos -->
+            <div class="badges-container" id="resultBadges">
+              <!-- Insertados dinámicamente -->
+            </div>
+
+            <!-- Justificación Técnica Inteligente -->
+            <div class="rationale-callout">
+              <div class="rationale-header">
+                <i class="fa-solid fa-microchip"></i> Diagnóstico del Asesor
+              </div>
+              <div class="rationale-text" id="resultRationaleText">
+                <!-- Texto explicativo personalizado -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Configurador de Accesorios en Vivo -->
+          <div id="accessoriesContainer">
+            <!-- Insertado dinámicamente -->
+          </div>
+
+          <!-- Cuadro de Cotización Estimada -->
+          <div>
+            <div class="quote-box">
+              <div>
+                <span class="price-meta">Inversión Estimada (Suministro + Configuración)</span>
+                <div class="price-figure" id="resultPriceFigure">$0 MXN</div>
+              </div>
+              <div class="price-currency">
+                IVA incluido · Póliza de garantía
+              </div>
+            </div>
+
+            <!-- Botones de Acción Inmediata -->
+            <div class="action-buttons-row">
+              <a href="#" target="_blank" class="btn-whatsapp" id="btnWhatsappAction">
+                <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+              </a>
+              <button class="btn-print" id="btnPrintAction">
+                <i class="fa-solid fa-file-pdf"></i> Imprimir Ficha / PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ficha Técnica Detallada -->
+      <div class="specs-section">
+        <div class="section-eyebrow">Ingeniería & Prestaciones</div>
+        <h3 class="section-title">Especificaciones Técnicas Certificadas</h3>
+        <div class="specs-grid" id="specsGrid">
+          <!-- Insertado dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Alternativas Viables -->
+      <div class="alternatives-container">
+        <div class="section-eyebrow">Opciones Complementarias</div>
+        <h3 class="section-title">Otras Alternativas que se Adaptan a tus Respuestas</h3>
+        <div class="alt-grid" id="alternativesGrid">
+          <!-- Insertado dinámicamente -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         VISTA 3: CATÁLOGO GENERAL & SHOWROOM
+         ==================================================================== -->
+    <section id="catalogView" class="catalog-view" style="display: none;">
+      <div class="catalog-header">
+        <div class="hero-pill">Catálogo Completo Portalis</div>
+        <h2 class="hero-title" style="font-size: 2.2rem;">Colección Arquitectónica 2026</h2>
+        <p class="hero-subtitle">
+          Explora todos nuestros modelos con ingeniería europea, cristales de autor y sistemas de máxima seguridad.
+        </p>
+
+        <!-- Filtros Rápidos -->
+        <div class="filter-bar">
+          <button class="filter-pill active" data-filter="all">Todas las Puertas</button>
+          <button class="filter-pill" data-filter="exterior">Entradas Principales</button>
+          <button class="filter-pill" data-filter="interior">Interiores & Recámaras</button>
+          <button class="filter-pill" data-filter="security">Alta Seguridad Grado 4-5</button>
+          <button class="filter-pill" data-filter="pivot">Pivotantes</button>
+        </div>
+      </div>
+
+      <!-- Grid de Modelos del Catálogo -->
+      <div class="catalog-grid" id="catalogGrid">
+        <!-- Insertado dinámicamente -->
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         SECCIONES DE VALOR TÉCNICO (RESPUESTAS A DUDAS DE CLIENTES REALES)
+         ==================================================================== -->
+
+    <!-- 1. Banner Express: "¿No sabes tus medidas exactas? Envía una foto" -->
+    <section class="photo-consult-banner">
+      <div class="photo-banner-text">
+        <div class="hero-pill" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-camera"></i> Asesoría Rápida por Imagen</div>
+        <h3 class="photo-banner-title">¿No tienes las medidas exactas de tu vano a la mano?</h3>
+        <p class="photo-banner-desc">
+          Toma una foto de tu puerta o entrada actual con tu celular y envíanosla por WhatsApp. Uno de nuestros ingenieros te responderá en menos de 15 minutos indicándote el tipo de vano, sentido de apertura y modelos compatibles.
+        </p>
+      </div>
+      <a href="https://api.whatsapp.com/send?text=Hola%20asesor%20Portalis%2C%20adjunto%20foto%20de%20mi%20entrada%20actual%20para%20asesor%C3%ADa%20t%C3%A9cnica." target="_blank" class="btn-whatsapp" style="flex: none; min-width: 240px;">
+        <i class="fa-brands fa-whatsapp"></i> Enviar Foto por WhatsApp
+      </a>
+    </section>
+
+    <!-- 2. Guía de Medición de Vano -->
+    <section id="measurementGuideSection" class="measurement-guide-section">
+      <div class="section-eyebrow">Manual Práctico de Obra</div>
+      <h3 class="section-title">Cómo Medir el Vano de tu Puerta Correctamente</h3>
+      <p style="color: var(--text-secondary); max-width: 750px; font-size: 0.95rem;">
+        Antes de ordenar o fabricar, estos 4 puntos aseguran que tu puerta encaje a la perfección sin contratiempos durante la instalación:
+      </p>
+
+      <div class="measurement-grid">
+        <div class="measure-step-card">
+          <div class="measure-step-num">01</div>
+          <h4 class="measure-title"><i class="fa-solid fa-arrows-left-right" style="color: var(--gold-primary);"></i> Ancho del Vano</h4>
+          <p class="measure-desc">Mide el ancho libre de pared a pared en tres puntos: arriba, al medio y abajo. La medida oficial siempre será la <strong>más estrecha</strong> de las tres.</p>
+        </div>
+
+        <div class="measure-step-card">
+          <div class="measure-step-num">02</div>
+          <h4 class="measure-title"><i class="fa-solid fa-arrows-up-down" style="color: var(--gold-primary);"></i> Altura de Piso a Dintel</h4>
+          <p class="measure-desc">Mide desde el <strong>piso ya terminado</strong> (con su loseta, madera o piedra) hasta el dintel superior. Si el piso aún no se coloca, descuenta el grosor previsto.</p>
+        </div>
+
+        <div class="measure-step-card">
+          <div class="measure-step-num">03</div>
+          <h4 class="measure-title"><i class="fa-solid fa-cube" style="color: var(--gold-primary);"></i> Grosor del Muro (Jamba)</h4>
+          <p class="measure-desc">Mide el espesor total de tu pared incluyendo yeso, aplanado o porcelanato. Esto determina el fondo exacto del marco para que quede al ras del muro.</p>
+        </div>
+
+        <div class="measure-step-card">
+          <div class="measure-step-num">04</div>
+          <h4 class="measure-title"><i class="fa-solid fa-door-open" style="color: var(--gold-primary);"></i> Sentido de Apertura</h4>
+          <p class="measure-desc">Párate frente a la puerta por el lado exterior y empújala hacia adentro: si las bisagras están a la derecha, es <strong>Derecha</strong>; si están a la izquierda, es <strong>Izquierda</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Comparativa de Sistemas de Apertura -->
+    <section class="systems-comparison-section">
+      <div class="section-eyebrow">Comparador Arquitectónico</div>
+      <h3 class="section-title">Pivotante vs Batiente Acorazada vs Enrasada Invisible</h3>
+      
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Sistema</th>
+              <th>Vano Recomendado</th>
+              <th>Nivel de Seguridad</th>
+              <th>Hermeticidad / Acústica</th>
+              <th>Mantenimiento</th>
+              <th>Inversión Estimada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight-col"><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--gold-primary);"></i> Pivotante Monumental</td>
+              <td>Ancho 1.20m a 1.60m · Alto hasta 3.00m</td>
+              <td>Grado 4 (Alta seguridad)</td>
+              <td>42 dB con cepillos mecánicos de suelo</td>
+              <td>Cero ajustes (pívot hidráulico en aceite)</td>
+              <td>Alta ($45k - $75k MXN)</td>
+            </tr>
+            <tr>
+              <td class="highlight-col"><i class="fa-solid fa-shield-halved" style="color: var(--gold-primary);"></i> Batiente Acorazada</td>
+              <td>Ancho 0.90m a 1.10m · Alto 2.10m a 2.40m</td>
+              <td>Grado 5 (Blindaje Certificado)</td>
+              <td>46 dB (Aislamiento termo-acústico extremo)</td>
+              <td>Mínimo en pernios axiales</td>
+              <td>Media-Alta ($28k - $48k MXN)</td>
+            </tr>
+            <tr>
+              <td class="highlight-col"><i class="fa-solid fa-compress" style="color: var(--gold-primary);"></i> Enrasada Invisible</td>
+              <td>Ancho 0.80m a 0.90m · Piso a techo</td>
+              <td>Grado 2 (Confort residencial)</td>
+              <td>38 dB (Picaporte magnético insonoro)</td>
+              <td>Bajo (bisagras 3D ocultas regulables)</td>
+              <td>Media ($16k - $26k MXN)</td>
+            </tr>
+            <tr>
+              <td class="highlight-col"><i class="fa-solid fa-border-none" style="color: var(--gold-primary);"></i> Cristal Acanalado Slim</td>
+              <td>Ancho 0.85m a 1.20m · Corredera o Pívot</td>
+              <td>Vidrio 5+5 Templado laminado</td>
+              <td>35 dB · Paso de luz tamizada difusa</td>
+              <td>Cero (Inmune a humedad o vapor)</td>
+              <td>Media-Alta ($22k - $36k MXN)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. Preguntas Frecuentes Técnicas (FAQ) -->
+    <section class="faq-section">
+      <div class="section-eyebrow">Dudas Resueltas</div>
+      <h3 class="section-title">Preguntas Frecuentes de Nuestros Clientes</h3>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué ocurre si le da sol directo y lluvia a una puerta de madera?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Las puertas de madera maciza para exterior de Portalis se fabrican con estructura interna de acero y maderas tratadas en cámara con barnices de poliuretano náutico con filtro UV. Sin embargo, si la puerta no tiene ningún alero o marquesina y recibe lluvia torrencial diaria, recomendamos el modelo <strong>Valiant Thermo-Alu</strong> o <strong>Kronos Armor</strong> en acero texturizado, los cuales no requieren ningún mantenimiento durante más de 15 años.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué pasa con la cerradura biométrica inteligente si se va la energía eléctrica?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Nuestras cerraduras inteligentes funcionan con batería de litio recargable independiente de la red de la casa (con autonomía de 8 a 10 meses por carga y alerta sonora con 30 días de anticipación). Adicionalmente, cuentan con <strong>puerto USB-C de emergencia exterior</strong> (para energizarla con una power bank) y <strong>llave física mecánica incopiable</strong> con cilindro oculto en la parte inferior.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Una puerta pivotante deja pasar polvo, insectos o corrientes de aire por abajo?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            No en los modelos de gama arquitectónica Portalis. Incorporamos un mecanismo suizo de <strong>guillotina de compresión automática</strong> oculta en el canto inferior de la hoja. Al cerrar la puerta, un émbolo mecánico presiona un burlete de silicona contra el piso, sellando herméticamente el espacio inferior contra corrientes de aire, polvo y bichos.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuál es el tiempo de fabricación e instalación?</span>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Los modelos en medidas estándar tienen un tiempo de suministro de 7 a 14 días hábiles. Las puertas a medida especial (como pivotantes de 3 metros o enrasadas a ras de pared de piso a techo) requieren un periodo de fabricación artesanal y calibración de herrajes de 3 a 5 semanas. La instalación profesional toma de 4 a 6 horas por puerta.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="site-footer">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div style="text-align: left;">
+        <strong style="color: var(--text-primary); font-family: 'Cinzel', serif;">PORTALIS DOORS & ACCENTS</strong>
+        <p style="margin: 0; font-size: 0.8rem;">Ingeniería de accesos, cerramientos acústicos y puertas monumentales de autor.</p>
+      </div>
+      <div>
+        <p style="margin: 0; font-size: 0.8rem;">Certificaciones UNE-EN 1627:2011 Grados 3, 4 y 5 · Herrajes Europeos FritsJurgens / Simonswerk</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Modulares -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
